@@ -10,33 +10,41 @@ class MainLogicaApp : AppCompatActivity() {
     var correctAnswers = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        submitbutton.setOnClickListener { onButtonPress() }
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    submitbutton.setOnClickListener { onButtonPress() }
+}
+
+    /**
+     *Methode om bij een buttonpress checkanswer uit te voeren en
+     * het aantal goede antwoorden eerst op nul zetten
+     */
+private fun onButtonPress() {
+    correctAnswers = 0
+    checkAnswer()
+}
+
+    /**
+     *Methode om aantal goede antwoorden te tellen als correctanswers
+     * Maakt toast message aan met aantal goede antwoorden
+     */
+private fun checkAnswer() {
+    if (A1.text.toString() == "T" || A1.text.toString() == "t") {
+        correctAnswers++
     }
 
-    private fun onButtonPress() {
-        correctAnswers = 0
-        checkAnswer()
+    if (A2.text.toString() == "F" || A2.text.toString() == "f") {
+        correctAnswers++
     }
 
-    private fun checkAnswer() {
-        if (A1.text.toString() == "T" || A1.text.toString() == "t") {
-            correctAnswers++
-        }
-
-        if (A2.text.toString() == "F" || A2.text.toString() == "f") {
-            correctAnswers++
-        }
-
-        if (A3.text.toString() == "F" || A3.text.toString() == "f") {
-            correctAnswers++
-        }
-
-        if (A4.text.toString() == "F" || A4.text.toString() == "f") {
-            correctAnswers++
-        }
-
-        Toast.makeText(this, getString(R.string.ToastMessage) + " $correctAnswers", Toast.LENGTH_SHORT).show()
+    if (A3.text.toString() == "F" || A3.text.toString() == "f") {
+        correctAnswers++
     }
+
+    if (A4.text.toString() == "F" || A4.text.toString() == "f") {
+        correctAnswers++
+    }
+
+    Toast.makeText(this, getString(R.string.ToastMessage) + " $correctAnswers", Toast.LENGTH_SHORT).show()
+}
 }
